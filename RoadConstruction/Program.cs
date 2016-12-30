@@ -47,7 +47,7 @@ namespace RoadConstruction
 
 
             // #4
-            Console.WriteLine("\n#4 Show the sum of cars in both direction by hours (hour, fromLower, fromUpper)?");
+            Console.WriteLine("\n#4 Show the sum of cars in both direction by hours (hour, fromLower, fromUpper)");
             Console.WriteLine("4. The sum of cars in both direction by hours (hour, fromLower, fromUpper):");
             var statisticsLower = trafficDataLower
                 .Select(line => new { inHour = line.inTime.Hour })

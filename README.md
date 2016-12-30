@@ -20,10 +20,10 @@ I'd never have thought that I would like writing C# code. I have really enjoyed 
 ## Specification of the excercise
 There are two cities connected with a road. A 1000 meter long section of this road is under construction,
 so overtaking is prohibited there.
-One day the cars crossing this road-section were registered. Data such as 
+One day the cars crossing this road-section were registered, sata such as 
 - time (hours minutes seconds) when they reached the road-section, 
 - the time (in seconds) that they would require to pass the road-section if there wouldn't be prohibition to overtake,
-- the code of the city the car was coming from ('U' for Upper, 'L' for Lower city),
+- the code of the city the car was coming from ('U' for Upper, 'L' for Lower city).
 
 These data are separated by a single space, and every record is stored in a new line.
 However the very first line of the file has only one number, that is the number of records in the file.

@@ -49,14 +49,16 @@ Show for these 10 cars their entering time (hours minutes seconds), the city the
 and the speed at the moment of entering the road-section (in m/s).**
 
 ### Task #6
-**Calculate the real leaving time (when cars pass the road-section) toward _Lower_ city.
+**Calculate the real leaving time (when cars pass the road-section) toward _Lower_ city.**
+
 If a car is blocked by a slower car (beware, there is a prohibition of overtaking)
 then the second car leaves the road-section in the same time when the provious one does.
 
-Save these data into a text file called _lower.txt_
-having formatted as 'HH mm ss' (hours minutes seconds), the three fields must be separated by a single space.**
+Save these data into a text file called **_lower.txt_**
+having formatted as 'HH mm ss' (hours minutes seconds), the three fields must be separated by a single space.
 
 
 That's all.
+
 
 The solution must be a console application.

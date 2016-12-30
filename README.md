@@ -20,35 +20,43 @@ I'd never have thought that I would like writing C# code. I have really enjoyed 
 ## Specification of the excercise
 There are two cities connected with a road. A 1000 meter long section of this road is under construction,
 so overtaking is prohibited there.
-One day the cars crossing this road-section were registered, sata such as 
+One day the cars crossing this road-section were registered, data such as 
 - time (hours minutes seconds) when they reached the road-section, 
 - the time (in seconds) that they would require to pass the road-section if there wouldn't be prohibition to overtake,
-- the code of the city the car was coming from ('U' for Upper, 'L' for Lower city).
+- the code of the city the car was coming from ('U' for **_Upper_**, 'L' for **_Lower_** city).
 
 These data are separated by a single space, and every record is stored in a new line.
 However the very first line of the file has only one number, that is the number of records in the file.
-The file is called 'traffic.txt'.
+(We know that this record number cannot be more than 2000.)
+The file is called **_traffic.txt_**.
 
 ### Task #1
 **Read the traffic data from the text file.**
 
 ### Task #2
-**Based on data from user input, find out what city was the 'n'th car (reaching the restricted route-section) going toward?**
+**Based on data from user input ('n'), find out what city was the 'n'th car (reaching the restricted route-section) going toward?**
 
 ### Task #3
 **Calculate the difference of the entering time (when reaching the road-section) in seconds of the last two cars
-going toward 'Upper' city.**
+going toward _Upper_ city.**
 
 ### Task #4
 **Show the sum of cars in both direction grouped by hours when entering the road-section (hour sumFromLower sumFromUpper).**
 
 ### Task #5
-**Find the 10 fastest cars regarding their speed when reaching the road-section.**
+**Find the 10 fastest cars regarding their speed when reaching the road-section. 
+Show for these 10 cars their entering time (hours minutes seconds), the city they are going toward, 
+and the speed at the moment of entering the road-section (in m/s).**
 
 ### Task #6
-**Calculate the real leaving time (when cars pass the road-section) toward 'Lower' city.
+**Calculate the real leaving time (when cars pass the road-section) toward _Lower_ city.
 If a car is blocked by a slower car (beware, there is a prohibition of overtaking)
-then the second car leaves the road-section exactly the same time when the provius one does.
+then the second car leaves the road-section in the same time when the provious one does.
 
-Save these data into a text file called 'lower.txt'
+Save these data into a text file called _lower.txt_
 having formatted as 'HH mm ss' (hours minutes seconds), the three fields must be separated by a single space.**
+
+
+That's all.
+
+The solution must be a console application.

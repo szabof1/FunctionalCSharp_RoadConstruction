@@ -81,5 +81,24 @@ namespace RoadConstruction
                 cityFromStr = "Upper";
             return cityFromStr;
         }
+
+        static void adjustOutTime(TrafficRecord lastLine, TrafficRecord line)
+        {
+            if (lastLine == null) lastLine = line;
+            else
+            {
+                if (line.outTime < lastLine.outTime)
+                {
+                    line.outTime = lastLine.outTime;
+                }
+                lastLine = line;
+            }
+        }
+
+        public static void adjustOutTimeForOneDirection(List<TrafficRecord> trafficData)
+        {
+            TrafficRecord previousLine = null;
+            trafficData.ForEach(line => TrafficRecord.adjustOutTime(previousLine, line));
+        }
     }
 }

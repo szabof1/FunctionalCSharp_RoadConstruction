@@ -2,6 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Configuration;
 
 namespace RoadConstruction
 {
@@ -11,7 +12,7 @@ namespace RoadConstruction
         {
             // #1
             Console.WriteLine("#1 Reading traffic data from text file");
-            var trafficData = File.ReadAllLines(".\\..\\..\\..\\traffic.txt")
+            var trafficData = File.ReadAllLines(ConfigurationManager.AppSettings["TrafficFilePath"])
                 .Skip(1) // Skip first line that contains the number of records
                 .Select(line => new TrafficRecord(line))
                 .ToList();
@@ -20,8 +21,8 @@ namespace RoadConstruction
 
             // #1 / Calculating real out times
             Console.WriteLine("#1 Calculating real out times when cars leave the road-section under construction");
-            adjustOutTimeForOneDirection(trafficDataLower);
-            adjustOutTimeForOneDirection(trafficDataUpper);
+            TrafficRecord.adjustOutTimeForOneDirection(trafficDataLower);
+            TrafficRecord.adjustOutTimeForOneDirection(trafficDataUpper);
 
             waitForEnterThenGoOn("\nPress Enter to continue");
 
@@ -70,7 +71,7 @@ namespace RoadConstruction
                     countUpper = s1.countUpper + s2.countUpper
                 }))
                 .ToList();
-            statistics.ForEach(line => Console.WriteLine("=> {0:#0} {1:#,##0} {2:#,##0}", line.inHour, line.countLower, line.countUpper));
+            statistics.ForEach(line => Console.WriteLine("{0} {1:#,##0} {2:#,##0}", line.inHour, line.countLower, line.countUpper));
 
             waitForEnterThenGoOn("\nPress Enter to continue");
 
@@ -82,14 +83,14 @@ namespace RoadConstruction
                 .OrderBy(line => line.journeyTimeSec)
                 .Take(10)
                 .ToList();
-            fastest10.ForEach(line => Console.WriteLine("{0} {1,-5} {2,5:#.0}", line.inTimeTxt(), line.cityToTxt(), line.inSpeed()));
+            fastest10.ForEach(line => Console.WriteLine("{0} {1,-5} {2:#.0}", line.inTimeTxt(), line.cityToTxt(), line.inSpeed()));
 
             waitForEnterThenGoOn("\nPress Enter to continue");
 
 
             // #6
             Console.WriteLine("\n#6 Write the out the \'out\' time (when leaving the road-section) of all the cars going toward \'Lower\' city (hours minutes seconds)");
-            using (StreamWriter writeFile = new StreamWriter(".\\..\\..\\..\\lower.txt"))
+            using (StreamWriter writeFile = new StreamWriter(ConfigurationManager.AppSettings["LowerFilePath"]))
             {
                 trafficDataUpper.ForEach(line => writeFile.WriteLine(line.outTimeTxt()));
             }
@@ -103,25 +104,6 @@ namespace RoadConstruction
         {
             Console.WriteLine(textToConsole);
             Console.ReadLine();
-        }
-
-        static void adjustOutTime(TrafficRecord lastLine, TrafficRecord line)
-        {
-            if (lastLine == null) lastLine = line;
-            else
-            {
-                if (line.outTime < lastLine.outTime)
-                {
-                    line.outTime = lastLine.outTime;
-                }
-                lastLine = line;
-            }
-        }
-
-        static void adjustOutTimeForOneDirection(List<TrafficRecord> trafficData)
-        {
-            TrafficRecord previousLine = null;
-            trafficData.ForEach(line => adjustOutTime(previousLine, line));
         }
     }
 }
